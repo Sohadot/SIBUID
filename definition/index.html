@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>What Is a SIBUID? | SIBUID</title>
+<meta name="description" content="Canonical definition of SIBUID: Software Identity Binding Unique Identifier, independent of any specific protocol or identifier format.">
+<link rel="canonical" href="https://sibuid.com/definition/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:title" content="What Is a SIBUID? | SIBUID">
+<meta property="og:description" content="Canonical definition of SIBUID: Software Identity Binding Unique Identifier, independent of any specific protocol or identifier format.">
+<meta property="og:url" content="https://sibuid.com/definition/">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/styles.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","name":"What Is a SIBUID?","headline":"What Is a SIBUID?","description":"Canonical definition of SIBUID: Software Identity Binding Unique Identifier, independent of any specific protocol or identifier format.","url":"https://sibuid.com/definition/","datePublished":"2026-08-28","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"SIBUID Reference","url":"https://sibuid.com"}}</script>
+</head>
+<body>
+<header class="site-head"><div class="wrap head-inner"><a class="brand" href="/">SI<span>·B·</span>UID</a><nav aria-label="Primary"><a href="/">Reference</a><a href="/definition/" aria-current="page">Definition</a><a href="/continuity/">Continuity</a><a href="/landscape/">Landscape</a><a href="/history/">History</a></nav></div></header>
+<main><div class="wrap">
+<article>
+<div class="kicker">Canonical definition · v0.1</div>
+<h1>What Is a SIBUID?</h1>
+<blockquote><strong>A SIBUID is a unique identifier used to distinguish a defined software-identity binding within the continuity boundary established by a system's policy.</strong></blockquote>
+<p>The definition is intentionally independent of any particular protocol, credential format, attestation architecture, registry, cryptographic representation, or standards body.</p>
+<h2>Software</h2>
+<p><strong>Software</strong> means an executable or operational software actor capable of being identified in a computing environment.</p>
+<div class="note"><div class="label">Illustrative — not normative</div><p>A service, workload, containerized process, scheduled function, application, automated process, AI agent, software component, or another independently identifiable software actor can fall within this domain.</p></div>
+<h2>Identity</h2>
+<p>An <strong>identity</strong> provides a stable way to refer to a software actor within a defined system or trust context.</p>
+<p>An identity can answer <em>Which actor is this?</em> It does not necessarily answer which key represents it, which build is operating, which runtime is executing it, which authority applies, or which evidence supports its present state.</p>
+<p>Those facts can be associated with the identity through other mechanisms. That association is the binding.</p>
+<h2>Binding</h2>
+<p>A <strong>software-identity binding</strong> is a defined association between a software identity and one or more properties that give that identity operational meaning for a particular purpose.</p>
+<div class="note"><div class="label">Illustrative — not normative</div><p>A binding can relate identity to cryptographic key material, software or model version, executable artifact, configuration, runtime or workload environment, provenance, attestation evidence, delegated authority, validity period, or policy state. Different systems can bind different properties according to the decisions they need to make.</p></div>
+<h2>Unique</h2>
+<p><strong>Unique</strong> means that the identifier distinguishes the binding within the namespace in which it is used.</p>
+<p>Uniqueness does not imply a globally centralized registry and does not prescribe a UUID, URI, DID, hash, database key, transparency-log identifier, or another representation.</p>
+<h2>Identifier</h2>
+<p>The <strong>identifier</strong> is the value through which the software-identity binding can be referred to unambiguously within its intended context.</p>
+<pre>Software actor
+    ↓
+Software identity
+    ↓
+Software-identity binding
+    ↓
+SIBUID</pre>
+<p>A separate identifier can name an exact snapshot, statement, attestation, record, or document associated with that binding. The binding identifier and the snapshot identifier are not necessarily the same value.</p>
+<h2>The three identity levels</h2>
+<table><thead><tr><th>Level</th><th>What it identifies</th><th>Question answered</th></tr></thead><tbody>
+<tr><td>Subject identity</td><td>The software actor</td><td>Which actor?</td></tr>
+<tr><td>Binding identity</td><td>A policy-delimited relationship between the actor and associated state/evidence/authority</td><td>Which software-identity binding?</td></tr>
+<tr><td>Snapshot identity</td><td>One exact representation or recorded state</td><td>Which exact state?</td></tr>
+</tbody></table>
+<h2>One actor can have more than one binding</h2>
+<pre>Software Identity: service-7821
+│
+├── Production binding
+├── Staging binding
+├── Customer-delegated binding
+└── Recovery binding</pre>
+<p>Each can have different keys, software state, environments, authority, evidence, or validity conditions. If those bindings need to be distinguished independently, each can have its own SIBUID.</p>
+<h2>Continuity delimits the binding</h2>
+<p>The term SIBUID does not universally decide whether an identifier should survive a change. A system first defines a <strong>continuity policy</strong>: the rules that determine which state transitions remain inside the same binding and which cross into a new binding.</p>
+<blockquote>A SIBUID identifies a binding as delimited by a continuity policy.</blockquote>
+<p>Whether a SIBUID persists across an authorized change, or a new one is assigned, is a policy question. This reference does not impose one universal answer. It names the question.</p>
+<h2>Semantic role, not wire format</h2>
+<p>SIBUID does not define authentication, authorization, attestation, credential issuance, transparency logging, key management, workload identity, or cryptographic proof formats.</p>
+<p>Existing and future systems may provide those functions. A SIBUID can be implemented using identifiers already available in those systems when they are suitable for identifying the intended binding.</p>
+<blockquote><strong>SIBUID is a semantic designation before it is an implementation choice.</strong></blockquote>
+<div class="definition-record"><h2>Definition record</h2><div class="status"><span class="pill">Expansion: Software Identity Binding Unique Identifier</span><span class="pill">Definition v0.1</span><span class="pill">Published 2026-08-28</span></div><p class="muted">Material changes to the canonical definition require a new definition version, a dated change record, an explanation of the semantic change, and preservation of previous definitions. Editorial corrections may update <code>dateModified</code> without changing the definition version.</p></div>
+</article></div></main>
+<footer class="site-foot"><div class="wrap foot-inner"><div><strong>SIBUID</strong> — Software Identity Binding Unique Identifier</div><div>Reference v0.1 · Published 2026-08-28 · Descriptive, not normative</div></div></footer>
+</body></html>
