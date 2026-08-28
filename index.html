@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SIBUID — Software Identity Binding Unique Identifier | SIBUID</title>
+<meta name="description" content="A durable descriptive reference for software identity binding, binding continuity, and the semantic role of a unique binding identifier.">
+<link rel="canonical" href="https://sibuid.com/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SIBUID — Software Identity Binding Unique Identifier | SIBUID">
+<meta property="og:description" content="A durable descriptive reference for software identity binding, binding continuity, and the semantic role of a unique binding identifier.">
+<meta property="og:url" content="https://sibuid.com/">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/styles.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"SIBUID \u2014 Software Identity Binding Unique Identifier","headline":"SIBUID \u2014 Software Identity Binding Unique Identifier","description":"A durable descriptive reference for software identity binding, binding continuity, and the semantic role of a unique binding identifier.","url":"https://sibuid.com/","datePublished":"2026-08-28","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"SIBUID Reference","url":"https://sibuid.com"}}</script>
+</head>
+<body>
+<header class="site-head"><div class="wrap head-inner"><a class="brand" href="/">SI<span>·B·</span>UID</a><nav aria-label="Primary"><a href="/" aria-current="page">Reference</a><a href="/definition/">Definition</a><a href="/continuity/">Continuity</a><a href="/landscape/">Landscape</a><a href="/history/">History</a></nav></div></header>
+<main><div class="wrap">
+<section class="hero">
+<div class="kicker">Independent descriptive technical reference · v0.1</div>
+<h1 class="display">SIBUID</h1>
+<div class="expansion">Software Identity Binding Unique Identifier</div>
+<p class="lede"><strong>An identity names an actor. A binding establishes what that actor currently is.</strong></p>
+<div class="splitmark" aria-label="SIBUID expansion">
+<div><b>S</b><small>Software</small></div><div><b>I</b><small>Identity</small></div><div><b>B</b><small>Binding</small></div><div><b>U</b><small>Unique</small></div><div><b>ID</b><small>Identifier</small></div>
+</div>
+</section>
+<article>
+<h2>The durable problem</h2>
+<p>Software is increasingly expected to act, authenticate, receive authority, invoke resources, produce evidence, and operate across environments without continuous human supervision.</p>
+<p>In that environment, an identifier alone answers only part of the question. It may tell a system <strong>which software identity is being presented</strong>. It does not, by itself, establish what currently stands behind that identity.</p>
+<p>A software identity may outlive a key. A key may outlive a build. A build may move between runtimes. Authority may be delegated, narrowed, renewed, or withdrawn. Evidence may be refreshed while the named actor remains operationally continuous.</p>
+<blockquote>How do we identify the binding between a software identity and the state, evidence, and authority that make that identity meaningful?</blockquote>
+<h2>What SIBUID names</h2>
+<p><strong>SIBUID</strong> is a descriptive term for a unique identifier used to distinguish a software-identity binding.</p>
+<p>The term does not prescribe a protocol, identifier syntax, credential format, registry, or trust architecture. Its role is semantic: to identify the binding being referred to, rather than merely the software actor or an individual piece of evidence about it.</p>
+<div class="note"><div class="label">Core boundary</div><p><strong>A SIBUID identifies a binding as delimited by a continuity policy.</strong> Whether that SIBUID persists across an authorized change, or a new one is assigned, is a policy question. This reference does not impose one universal answer; it names the question and the object to which the answer applies.</p></div>
+<h2>Identity, binding, snapshot</h2>
+<div class="grid2">
+<div class="card"><h3>Software identity</h3><p>Who or what is being identified.</p></div>
+<div class="card"><h3>Software-identity binding</h3><p>The defined relationship between that identity and the properties, state, evidence, or authority that give it operational meaning.</p></div>
+<div class="card"><h3>SIBUID</h3><p>The unique identifier assigned to that binding within the continuity boundary chosen by the system.</p></div>
+<div class="card"><h3>Snapshot identifier</h3><p>An identifier or digest for one exact recorded state, statement, attestation, or evidence object.</p></div>
+</div>
+<h2>Why the problem grows</h2>
+<p>As software becomes more autonomous and mobile, the distance between <strong>the name of the actor</strong> and <strong>the state actually represented by that name</strong> becomes more operationally important.</p>
+<p>A service, workload, container, scheduled function, device-adjacent software process, or AI agent can retain a stable identity while keys, builds, runtimes, authority, and evidence change around it.</p>
+<p>The mechanisms used to establish software identity will evolve. The underlying distinction is more durable:</p>
+<blockquote>The actor is one thing; the binding that tells us what that actor currently represents is another.</blockquote>
+<h2>Scope</h2>
+<p>This reference does not claim a new Internet protocol or standards-track identifier. It does not replace authentication, authorization, workload identity, attestation, transparency, or provenance systems.</p>
+<p>It names a semantic role that may be implemented using existing or future mechanisms.</p>
+<div class="definition-record"><div class="status"><span class="pill">Term: SIBUID</span><span class="pill">Version: 0.1</span><span class="pill">First published: 2026-08-28</span><span class="pill">Status: descriptive</span></div></div>
+</article></div></main>
+<footer class="site-foot"><div class="wrap foot-inner"><div><strong>SIBUID</strong> — Software Identity Binding Unique Identifier</div><div>Reference v0.1 · Published 2026-08-28 · Descriptive, not normative</div></div></footer>
+</body></html>

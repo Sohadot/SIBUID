@@ -1,0 +1,10 @@
+# SIBUID
+
+> Software Identity Binding Unique Identifier. Independent descriptive technical reference.
+
+Canonical definition: https://sibuid.com/definition/
+Binding continuity: https://sibuid.com/continuity/
+Current standards landscape: https://sibuid.com/landscape/
+Open-ended history: https://sibuid.com/history/
+
+Status: descriptive, not normative. Reference v0.1. First published 2026-08-28.
