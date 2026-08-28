@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Software Identity Binding Landscape | SIBUID</title>
+<meta name="description" content="A source-backed map of workload identity, attestation, artifact provenance, transparency, and agent identity around the SIBUID concept.">
+<link rel="canonical" href="https://sibuid.com/landscape/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Software Identity Binding Landscape | SIBUID">
+<meta property="og:description" content="A source-backed map of workload identity, attestation, artifact provenance, transparency, and agent identity around the SIBUID concept.">
+<meta property="og:url" content="https://sibuid.com/landscape/">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/styles.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","name":"Software Identity Binding Landscape","headline":"Software Identity Binding Landscape","description":"A source-backed map of workload identity, attestation, artifact provenance, transparency, and agent identity around the SIBUID concept.","url":"https://sibuid.com/landscape/","datePublished":"2026-08-28","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"SIBUID Reference","url":"https://sibuid.com"}}</script>
+</head>
+<body>
+<header class="site-head"><div class="wrap head-inner"><a class="brand" href="/">SI<span>·B·</span>UID</a><nav aria-label="Primary"><a href="/">Reference</a><a href="/definition/">Definition</a><a href="/continuity/">Continuity</a><a href="/landscape/" aria-current="page">Landscape</a><a href="/history/">History</a></nav></div></header>
+<main><div class="wrap">
+<article>
+<div class="kicker">Time-bounded context · v0.1</div>
+<h1>Software Identity Binding Landscape</h1>
+<p class="lede">The problem is older than any one mechanism.</p>
+<p>Software systems need ways to answer different questions: Which actor is this? What state is it in? What evidence supports that state? Which statements have been made about it? Which authority does it carry? Which changes preserve continuity? Which identifier refers to the binding being evaluated?</p>
+<p>No single mechanism needs to answer all of these questions. Modern identity, attestation, transparency, provenance, and authorization systems divide the problem into different objects and roles.</p>
+<p>SIBUID is best understood against that landscape. It is not a replacement for it.</p>
+<h2>A problem-centered map</h2>
+<table><thead><tr><th>Concern</th><th>Typical object</th><th>Persistent question</th></tr></thead><tbody>
+<tr><td>Actor identity</td><td>workload/service/agent identifier</td><td>Which actor?</td></tr>
+<tr><td>Verifiable identity</td><td>certificate/token/identity document</td><td>Can the actor present a verifiable identity?</td></tr>
+<tr><td>Operational state</td><td>evidence/claims</td><td>What state is the actor in?</td></tr>
+<tr><td>Appraisal</td><td>attestation result/policy decision</td><td>Is that state acceptable?</td></tr>
+<tr><td>Artifact identity</td><td>digest/resource descriptor</td><td>Which exact artifact?</td></tr>
+<tr><td>Transparency</td><td>signed statement/log entry/receipt</td><td>What was asserted and recorded?</td></tr>
+<tr><td>Provenance</td><td>supply-chain statement</td><td>Where did the software come from?</td></tr>
+<tr><td>Binding identity</td><td>policy-delimited binding identifier</td><td>Which identity-to-state relationship?</td></tr>
+<tr><td>Continuity</td><td>transition policy/history</td><td>Is this still the same binding?</td></tr>
+</tbody></table>
+<h2>Workload identity</h2>
+<p>Workload-identity systems establish stable identities for software running in dynamic infrastructure. A current example is SPIFFE, whose SPIFFE ID uniquely and specifically identifies a workload within a trust domain and whose identity documents make that identity verifiable.</p>
+<p>This addresses <em>Which workload is this?</em> A SIBUID can refer to a binding associated with such a workload identity rather than replacing it.</p>
+<p class="muted">Current example: SPIFFE / SPIRE. Source: <a href="https://spiffe.io/docs/latest/spiffe/concepts/" rel="external">SPIFFE Concepts</a>.</p>
+<h2>Attestation</h2>
+<p>Attestation systems address another question: what evidence supports claims about the current or intended state of a system?</p>
+<p>The RATS architecture separates the Attester, Evidence, Verifier, Attestation Result, and Relying Party. It is deliberately neutral toward processor architectures, claim content, and protocols.</p>
+<p>A SIBUID does not replace Evidence or an Attestation Result. Those objects can contribute to the state represented by a binding.</p>
+<p class="muted">Current example: IETF RATS. Source: <a href="https://www.rfc-editor.org/rfc/rfc9334.html" rel="external">RFC 9334</a>.</p>
+<h2>Artifact attestations</h2>
+<p>Artifact-attestation systems bind statements to exact software artifacts. The in-toto Statement model requires subject artifacts to carry digests and treats the identified subjects as immutable for matching purposes.</p>
+<p>This is strong for <em>Which exact artifact does this attestation concern?</em> It is distinct from <em>Do several changing states still belong to the same policy-delimited software-identity binding?</em></p>
+<p class="muted">Current example: in-toto Attestation Framework. Source: <a href="https://github.com/in-toto/attestation/blob/main/spec/v1/statement.md" rel="external">Statement v1 specification</a>.</p>
+<h2>Transparency</h2>
+<p>Transparency systems make signed statements inspectable and auditable over time.</p>
+<p>SCITT defines a content-agnostic architecture for signed statements, receipts, and verifiable data structures. Its Subject concept can group a logical collection of statements, including coherent sequences about the same artifact.</p>
+<div class="note"><div class="label">Important boundary</div><p>Existing transparency mechanisms can already provide stable subject references across changing statements. SIBUID therefore does <strong>not</strong> claim that a new persistence mechanism is missing. Its role is descriptive: when an identifier is used specifically to identify a software-identity binding bounded by continuity policy, this reference calls that semantic role a SIBUID.</p></div>
+<p class="muted">Current example: SCITT. Source: <a href="https://www.rfc-editor.org/rfc/rfc9943.html" rel="external">RFC 9943</a>.</p>
+<h2>Transparency logs</h2>
+<p>Transparency logs provide append-only records of signed or verified events. Sigstore's Rekor is designed as an immutable, tamper-resistant ledger for signed metadata in software supply chains.</p>
+<p>A log entry can be evidence in the history of a binding without being the semantic identity of the binding itself.</p>
+<p class="muted">Current example: Sigstore Rekor. Source: <a href="https://docs.sigstore.dev/logging/overview/" rel="external">Rekor overview</a>.</p>
+<h2>Agent identity</h2>
+<p>As software becomes more autonomous, existing identity and authorization mechanisms are being applied directly to agents that can act with delegated authority.</p>
+<p>This is relevant because autonomy makes the distinction between actor identity and current binding state more operationally important. It does not make SIBUID an AI-agent standard.</p>
+<p class="muted">Current example as of 2026: AI Agent Authentication and Authorization, revision 03 published 6 July 2026. Source: <a href="https://datatracker.ietf.org/doc/draft-klrc-aiagent-auth/" rel="external">IETF Datatracker</a>.</p>
+<h2>What SIBUID claims — and does not claim</h2>
+<div class="grid2"><div class="card"><h3>Does not claim</h3><ul><li>existing systems lack identifiers;</li><li>existing systems cannot group changing statements;</li><li>software identity is an unsolved field;</li><li>a new cryptographic mechanism is required;</li><li>one universal continuity policy should exist.</li></ul></div><div class="card"><h3>Does claim</h3><p>An actor identifier, a binding identifier, and a snapshot identifier answer different questions even when one technical field can sometimes perform more than one role.</p><p>The distinction is semantic. Implementations may reuse existing mechanisms.</p></div></div>
+<h2>Current comparison</h2>
+<table><thead><tr><th>System</th><th>Primary role here</th><th>Relationship to SIBUID</th></tr></thead><tbody>
+<tr><td>SPIFFE / SPIRE</td><td>Workload identity and issuance</td><td>Complementary</td></tr>
+<tr><td>RATS</td><td>Evidence appraisal architecture</td><td>Complementary</td></tr>
+<tr><td>in-toto</td><td>Artifact-bound attestations</td><td>Complementary</td></tr>
+<tr><td>Sigstore / Rekor</td><td>Transparency evidence</td><td>Complementary</td></tr>
+<tr><td>SCITT</td><td>Statement sequencing and subject grouping</td><td>Can implement part of the role</td></tr>
+<tr><td>Agent identity work</td><td>Identity/authentication/authorization for autonomous software</td><td>Application context</td></tr>
+<tr><td>SIBUID</td><td>Semantic name for a policy-delimited software-identity binding identifier</td><td>Descriptive layer</td></tr>
+</tbody></table>
+<h2>Time-bounded context</h2>
+<p>This page is intentionally temporal. Standards, drafts, and implementations will change. The canonical definition of SIBUID does not depend on this table.</p>
+<p>When a mechanism changes, this page should be updated by adding or revising an entry rather than rewriting the underlying problem.</p>
+<div class="definition-record"><div class="status"><span class="pill">Landscape v0.1</span><span class="pill">Published 2026-08-28</span><span class="pill">Primary sources only</span></div></div>
+</article></div></main>
+<footer class="site-foot"><div class="wrap foot-inner"><div><strong>SIBUID</strong> — Software Identity Binding Unique Identifier</div><div>Reference v0.1 · Published 2026-08-28 · Descriptive, not normative</div></div></footer>
+</body></html>
