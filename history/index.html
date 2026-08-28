@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>From Software Identity to Binding Continuity | SIBUID</title>
+<meta name="description" content="An open-ended history of the systems problem behind software identity binding, from naming and authentication to evidence, transparency, autonomy, and continuity.">
+<link rel="canonical" href="https://sibuid.com/history/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:title" content="From Software Identity to Binding Continuity | SIBUID">
+<meta property="og:description" content="An open-ended history of the systems problem behind software identity binding, from naming and authentication to evidence, transparency, autonomy, and continuity.">
+<meta property="og:url" content="https://sibuid.com/history/">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/styles.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","name":"From Software Identity to Binding Continuity","headline":"From Software Identity to Binding Continuity","description":"An open-ended history of the systems problem behind software identity binding, from naming and authentication to evidence, transparency, autonomy, and continuity.","url":"https://sibuid.com/history/","datePublished":"2026-08-28","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"SIBUID Reference","url":"https://sibuid.com"}}</script>
+</head>
+<body>
+<header class="site-head"><div class="wrap head-inner"><a class="brand" href="/">SI<span>·B·</span>UID</a><nav aria-label="Primary"><a href="/">Reference</a><a href="/definition/">Definition</a><a href="/continuity/">Continuity</a><a href="/landscape/">Landscape</a><a href="/history/" aria-current="page">History</a></nav></div></header>
+<main><div class="wrap">
+<article>
+<div class="kicker">Open-ended historical context · v0.1</div>
+<h1>From Software Identity to Binding Continuity</h1>
+<p class="lede">A history of the problem, not a history invented for the term.</p>
+<p>SIBUID is a recent descriptive term. The underlying problem is not recent.</p>
+<p>Software has long required identifiers, credentials, provenance, evidence, and policy. What changes over time is the degree to which software can move, update, act autonomously, inherit authority, and accumulate evidence while retaining a stable identity.</p>
+<div class="timeline">
+<section><h2>1 — Software as a named object</h2><p>The earliest form of the problem is simple: <em>How do we refer to a piece of software?</em> Names, process identifiers, package names, service names, hostnames, database keys, and other identifiers provide reference. The main concern is naming.</p></section>
+<section><h2>2 — Software as an authenticated actor</h2><p>Distributed systems turn software into an actor that must authenticate to other software. The question expands: <em>Which software actor is making this request, and can it prove that identity?</em> Certificates, tokens, service identities, and workload-identity systems make software identity verifiable in dynamic environments.</p></section>
+<section><h2>3 — Identity separates from location</h2><p>Cloud computing, orchestration, containers, autoscaling, and heterogeneous infrastructure weaken the assumption that network location is a reliable identity boundary. A workload may move while its identity remains meaningful.</p><p class="muted">Historical example: SPIFFE formalizes a workload identity namespace and verifiable identity documents for dynamic environments. <a href="https://spiffe.io/docs/latest/spiffe/concepts/" rel="external">Source</a>.</p></section>
+<section><h2>4 — Identity separates from exact software state</h2><p>Once an identity can persist while software updates, another separation becomes visible. The same identity can be associated over time with different keys, builds, configurations, runtimes, and evidence.</p><blockquote>What, at this moment, stands behind the stable identity?</blockquote></section>
+<section><h2>5 — Evidence becomes a first-class object</h2><p>Remote attestation makes operational state explicit. The architecture separates the actor producing evidence, the evidence itself, the verifier, the appraisal result, and the relying party.</p><p class="muted">Historical example: RFC 9334 (January 2023) provides the RATS architectural model and common terminology. <a href="https://www.rfc-editor.org/rfc/rfc9334.html" rel="external">Source</a>.</p></section>
+<section><h2>6 — Artifact state becomes content-addressable</h2><p>Software supply-chain systems bind attestations and provenance to exact artifacts. Digest-addressed subjects make <em>Which exact artifact?</em> precise. They also clarify a separate problem: a digest names an exact state; it does not by itself explain whether a later state remains part of the same operational relationship.</p><p class="muted">Historical example: in-toto's Statement model requires subject software artifacts to carry digests. <a href="https://github.com/in-toto/attestation/blob/main/spec/v1/statement.md" rel="external">Source</a>.</p></section>
+<section><h2>7 — Assertions become transparent over time</h2><p>Transparency architectures add persistent, auditable histories of statements. A stable subject reference can organize changing statements without forcing every state to become an unrelated object.</p><p class="muted">Historical example: SCITT, standardized as RFC 9943 in June 2026, defines signed statements, receipts, sequences, and issuer-defined Subjects for grouping statements. <a href="https://www.rfc-editor.org/rfc/rfc9943.html" rel="external">Source</a>.</p></section>
+<section><h2>8 — Software becomes increasingly autonomous</h2><p>Software actors increasingly invoke tools, act across systems, hold delegated authority, rotate credentials automatically, update without continuous human intervention, and produce or consume evidence.</p><p>The practical distance between <strong>the actor's stable identity</strong> and <strong>the state, evidence, and authority currently represented by that identity</strong> becomes larger.</p><p class="muted">Current example as of 2026: IETF work applies existing workload-identity and authorization mechanisms to AI-agent interactions. <a href="https://datatracker.ietf.org/doc/draft-klrc-aiagent-auth/" rel="external">Source</a>.</p></section>
+<section><h2>9 — Binding continuity becomes explicit</h2><p>Once identity and its current representation are treated as distinct, systems encounter a recurring policy question: <em>When the representation changes, is this still the same binding?</em></p><p>The answer depends on the meaning of the binding and the policy around it. This is where <strong>binding continuity</strong> becomes useful explicit vocabulary.</p></section>
+</div>
+<h2>SIBUID enters the vocabulary</h2>
+<p>SIBUID is introduced in this reference as <strong>Software Identity Binding Unique Identifier</strong>.</p>
+<p>It names the semantic role of an identifier used to distinguish a software-identity binding within a continuity boundary chosen by policy.</p>
+<p>It does not claim that the mechanisms underneath it are new. It does not claim that earlier identity, attestation, transparency, or provenance systems lacked identifiers.</p>
+<h2>An open-ended timeline</h2>
+<pre>Software naming
+      ↓
+Authenticated software identity
+      ↓
+Identity independent of location
+      ↓
+Identity independent of exact state
+      ↓
+Attestation and evidence
+      ↓
+Content-addressed artifacts
+      ↓
+Transparent statement histories
+      ↓
+Autonomous software and delegated authority
+      ↓
+Binding continuity
+      ↓
+[ future mechanisms and vocabulary ]</pre>
+<p>Future systems can be added as new stages or examples. The structure is designed to grow without rewriting the earlier problem.</p>
+<h2>The durability test</h2>
+<p>A historical reference should remain meaningful even when individual standards change.</p>
+<blockquote>The problem belongs in the body. Standards belong in examples and evidence.</blockquote>
+<p>If every named standard on this page disappeared, the sequence above should still describe the underlying systems pressure.</p>
+<div class="definition-record"><div class="status"><span class="pill">History v0.1</span><span class="pill">Published 2026-08-28</span><span class="pill">Open-ended by design</span></div></div>
+</article></div></main>
+<footer class="site-foot"><div class="wrap foot-inner"><div><strong>SIBUID</strong> — Software Identity Binding Unique Identifier</div><div>Reference v0.1 · Published 2026-08-28 · Descriptive, not normative</div></div></footer>
+</body></html>
