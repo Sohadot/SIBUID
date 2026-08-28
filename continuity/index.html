@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Binding Continuity | SIBUID</title>
+<meta name="description" content="A conceptual reference for deciding when a software-identity binding persists, drifts, or breaks across state transitions.">
+<link rel="canonical" href="https://sibuid.com/continuity/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Binding Continuity | SIBUID">
+<meta property="og:description" content="A conceptual reference for deciding when a software-identity binding persists, drifts, or breaks across state transitions.">
+<meta property="og:url" content="https://sibuid.com/continuity/">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/styles.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","name":"Binding Continuity","headline":"Binding Continuity","description":"A conceptual reference for deciding when a software-identity binding persists, drifts, or breaks across state transitions.","url":"https://sibuid.com/continuity/","datePublished":"2026-08-28","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"SIBUID Reference","url":"https://sibuid.com"}}</script>
+</head>
+<body>
+<header class="site-head"><div class="wrap head-inner"><a class="brand" href="/">SI<span>·B·</span>UID</a><nav aria-label="Primary"><a href="/">Reference</a><a href="/definition/">Definition</a><a href="/continuity/" aria-current="page">Continuity</a><a href="/landscape/">Landscape</a><a href="/history/">History</a></nav></div></header>
+<main><div class="wrap">
+<article>
+<div class="kicker">Conceptual reference · v0.1</div>
+<h1>Binding Continuity</h1>
+<p class="lede"><strong>When does a software-identity binding remain the same?</strong></p>
+<p>Software changes. Keys rotate. Builds are replaced. Configurations evolve. Execution moves between environments. Authority expands, narrows, expires, or is renewed. Evidence is refreshed.</p>
+<p>Yet systems often need to decide whether the software-identity binding before and after such a change should still be treated as <strong>the same binding</strong>.</p>
+<p>That question is binding continuity.</p>
+<h2>Identity can persist while representation changes</h2>
+<p>An identity names an actor. A binding establishes what that actor currently is for a defined operational purpose.</p>
+<pre>Earlier state                 Later state
+Identity: service-7821        Identity: service-7821
+Key: K1                       Key: K2
+Build: B4                     Build: B5
+Runtime: R1                   Runtime: R2
+Authority: A1                 Authority: A1</pre>
+<p>The actor may still be recognized by the same identity. But several facts behind that identity have changed.</p>
+<blockquote>The question is not merely <em>What changed?</em> It is: <strong>Did the binding survive the change?</strong></blockquote>
+<h2>A SIBUID identifies a policy-delimited binding</h2>
+<p>A SIBUID does not identify an abstract relationship with unlimited persistence.</p>
+<blockquote><strong>A SIBUID identifies a binding as delimited by a continuity policy.</strong></blockquote>
+<p>The continuity policy defines which transitions remain inside that binding and which establish a different binding.</p>
+<ul><li>If policy treats the transition as continuity-preserving, the existing SIBUID may persist.</li><li>If policy treats the transition as continuity-breaking, a new SIBUID may be assigned.</li></ul>
+<p><strong>SIBUID names the binding. Continuity policy defines its boundary.</strong></p>
+<h2>Change and replacement are not the same thing</h2>
+<div class="note"><div class="label">Illustrative — not normative</div><ul><li>authorized key rotation → may preserve continuity;</li><li>approved software update → may preserve continuity;</li><li>expected runtime migration → may preserve continuity;</li><li>unauthorized key substitution → may break continuity;</li><li>unexplained software replacement → may break continuity;</li><li>replacement of the underlying actor → may require a new binding.</li></ul><p>The examples illustrate the distinction between <strong>change to a binding</strong> and <strong>replacement of a binding</strong>. They are not transition rules.</p></div>
+<h2>Continuity is a decision</h2>
+<pre>Previous binding state
+        │
+        │ transition
+        ▼
+Current binding state
+        │
+        ├── CONTINUITY PRESERVED
+        ├── CONTINUITY UNCERTAIN
+        └── CONTINUITY BROKEN</pre>
+<p>A decision can depend on which property changed, who authorized it, whether the change was expected, whether cryptographic continuity exists, whether evidence remains valid, whether authority stayed within permitted bounds, and whether the actor itself remains meaningfully the same.</p>
+<p>There is no universal continuity rule implied by the term SIBUID.</p>
+<h2>The SIBUID question</h2>
+<blockquote><strong>Should the existing SIBUID persist, or should a new SIBUID be assigned?</strong></blockquote>
+<p>This reference does not answer that question universally. It names it.</p>
+<h2>Continuity is not immutability</h2>
+<p>A persistent binding identifier does not mean the binding never changes. Persistence and immutability are different.</p>
+<p>An immutable snapshot says: <em>this exact recorded state will not change.</em></p>
+<p>A continuity relationship says: <em>these different states are treated as successive states of the same binding.</em></p>
+<pre>SIBUID: binding-42
+│
+├── Snapshot A
+├── Snapshot B
+├── Snapshot C
+└── Snapshot D</pre>
+<p>Each snapshot may have a different digest. The SIBUID may remain the same if policy treats the transitions as continuous.</p>
+<h2>A binding may have generations</h2>
+<p>A useful conceptual model treats each accepted state as a generation.</p>
+<pre>Binding
+│
+├── Generation 1
+├── Generation 2
+├── Generation 3
+└── Generation 4</pre>
+<p>A generation is not required by the SIBUID definition. It is a convenient way to reason about change.</p>
+<h2>Drift</h2>
+<p>Real systems often encounter uncertainty rather than clean binary transitions.</p>
+<p><strong>Drift</strong> describes a condition in which a binding has changed but available evidence is insufficient to establish either accepted continuity or confirmed replacement.</p>
+<pre>Known state
+   ↓
+unexpected change
+   ↓
+insufficient evidence
+   ↓
+DRIFT</pre>
+<div class="note"><div class="label">Illustrative — not normative</div><p>A drift condition might lead a system to re-verify, quarantine, reduce authority, request human review, restore a prior state, or establish a new binding. SIBUID does not mandate the response.</p></div>
+<h2>The continuity boundary</h2>
+<p>Every continuity policy implicitly defines a boundary.</p>
+<p>Inside the boundary, changes are accepted as evolution of the same binding. Across the boundary, the previous binding identity no longer applies.</p>
+<p>The boundary depends on what the binding is intended to mean. A service may tolerate runtime migration. A hardware-bound system may not. A development workload may tolerate frequent software updates. A safety-critical system may treat the same update as identity-significant.</p>
+<p>A device, container, service, scheduled function, workload, or AI agent can use the same conceptual vocabulary while applying different continuity rules.</p>
+<h2>What happens when continuity is left implicit?</h2>
+<p>When a system changes binding state without defining continuity rules, two parties can observe the same transition and disagree about whether they are still referring to the same operational relationship.</p>
+<p>A mature continuity policy should be able to answer:</p>
+<ol><li>Which properties are continuity-relevant?</li><li>Which transitions may change them?</li><li>Who may authorize those transitions?</li><li>Which evidence is required?</li><li>When is continuity preserved?</li><li>When is continuity broken?</li><li>When is the result uncertain?</li><li>When must a new SIBUID be assigned?</li></ol>
+<blockquote><strong>The answers may differ. The questions endure.</strong></blockquote>
+<h2>Continuity and history</h2>
+<p>A binding history can organize accepted states around a stable reference point. The identifier alone does not provide that history. It provides the stable point around which the history can be organized.</p>
+<div class="definition-record"><div class="status"><span class="pill">Topic: Binding Continuity</span><span class="pill">Reference v0.1</span><span class="pill">Published 2026-08-28</span></div><p class="muted">This page defines the continuity problem and its vocabulary. It does not define a mandatory continuity policy, transition table, identifier syntax, protocol, or compliance standard.</p></div>
+</article></div></main>
+<footer class="site-foot"><div class="wrap foot-inner"><div><strong>SIBUID</strong> — Software Identity Binding Unique Identifier</div><div>Reference v0.1 · Published 2026-08-28 · Descriptive, not normative</div></div></footer>
+</body></html>
